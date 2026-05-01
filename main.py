@@ -14,8 +14,8 @@ while True:       #Использую для работы цикла, чтобы
   elif g=="посмотреть":
     genre=input("Какой жанр фильма хотите посмотреть?").lower()
     country=input("Выберите страну:Россия,США,Франция,Германия.Прошу с заглавной буквы. ")
-    cursor.execute("SELECT title FROM movies WHERE genre=? and country=?",(genre,country)) #по сравнению с другой операцией, тут cursor ищет в бд данные
-    film=cursor.fetchone()     #рандомом выбирается фильм
+    cursor.execute("SELECT title FROM movies WHERE genre=? and country=? ORDER BY RANDOM()",(genre,country)) #по сравнению с другой операцией, тут cursor ищет в бд данные
+    film=cursor.fetchone()     #рандомом выбирается фильм из-за ORDER BY RANDOM()
     if film:
       print(f"Приятного просмотра! Советую: {film[0]}")
     else:
